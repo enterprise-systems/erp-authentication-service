@@ -47,7 +47,7 @@ springdoc:
   packagesToScan: com.enterprisesystems.erpauthenticationservice
 
 keycloak:
-  auth-server-url: http://richardvu.myddns.me:8010/auth/realms/open-erp/protocol/openid-connect/token
+  auth-server-url: http://richardvu.myddns.me:8010
   realm: open-erp
   resource: erp-authentication-service
   ssl-required: external
@@ -56,7 +56,8 @@ keycloak:
   use-resource-role-mappings: true
   bearer-only: true
 
-
+login-url: ${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/token
+logout-url: ${keycloak.auth-server-url}/auth/realms/${keycloak.realm}/protocol/openid-connect/logout
 --- 
 spring:
   config:
