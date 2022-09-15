@@ -1,0 +1,86 @@
+server:
+  port: 1010
+
+management:
+  endpoints: 
+    web:
+      exposure: 
+        include: "health, info"
+  info:
+    java:
+      enabled: true
+    env:
+      enabled: true
+
+spring:
+  application:
+    name: erp-authentication-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://richardvu.myddns.me:8010/auth/realms/microservice/protocol/openid-connect/certs
+
+info:
+  application: erp-authentication-service
+  label: ERP Authentication Service
+  version: 1.0.0
+  state: Development
+
+eureka:
+  instance:
+    hostname: 192.168.1.9
+  client:
+    serviceUrl:
+      defaultZone: http://richard:richard@${eureka.instance.hostname}:1000/eureka/
+
+logging:
+  level:
+      org:
+        springframework:
+          security:
+            web: DEBUG
+  pattern: 
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+springdoc:
+  packagesToScan: com.enterprisesystems.erpauthenticationservice
+
+--- 
+spring:
+  config:
+    activate:
+      on-profile:
+      - localhost
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://richard:richard@${eureka.instance.hostname}:1000/eureka/
+
+--- 
+spring:
+  config:
+    activate:
+      on-profile:
+      - development
+eureka:
+  instance:
+    hostname: richardvu.myddns.me
+  client:
+    serviceUrl:
+      defaultZone: http://richard:richard@${eureka.instance.hostname}:1001/eureka/
+
+--- 
+spring:
+  config:
+    activate:
+      on-profile:
+      - production
+eureka:
+  instance:
+    hostname: 192.168.1.9
+  client:
+    serviceUrl:
+      defaultZone: http://richard:richard@${eureka.instance.hostname}:1002/eureka/
