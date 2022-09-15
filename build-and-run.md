@@ -26,11 +26,11 @@ docker build -t erp-authentication-service:latest -f Dockerfile .
 
 ### Run
 
-docker run -it --restart always --name erp-authentication-service -p 1010:1010 -e SPRING_PROFILES_ACTIVE=localhost erp-authentication-service:latest
+docker run -it --restart always --name erp-authentication-service-localhost -p 1010:1010 -e SPRING_PROFILES_ACTIVE=localhost erp-authentication-service:latest
 
-docker run -it --restart always --name erp-authentication-service -p 1011:1010 -e SPRING_PROFILES_ACTIVE=development erp-authentication-service:latest
+docker run -it --restart always --name erp-authentication-service-development -p 1011:1010 -e SPRING_PROFILES_ACTIVE=development erp-authentication-service:latest
 
-docker run -it --restart always --name erp-authentication-service -p 1012:1010 -e SPRING_PROFILES_ACTIVE=production erp-authentication-service:latest
+docker run -it --restart always --name erp-authentication-service-production -p 1012:1010 -e SPRING_PROFILES_ACTIVE=production erp-authentication-service:latest
 
 #### SPRING_PROFILES_ACTIVE (env)
 
