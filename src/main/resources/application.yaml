@@ -46,6 +46,17 @@ logging:
 springdoc:
   packagesToScan: com.enterprisesystems.erpauthenticationservice
 
+keycloak:
+  auth-server-url: http://richardvu.myddns.me:8010/auth/realms/open-erp/protocol/openid-connect/token
+  realm: open-erp
+  resource: erp-authentication-service
+  ssl-required: external
+  credentials:
+    secret: BpLzt6cPxyPpHmydwDzQEFwE8q9iWzug
+  use-resource-role-mappings: true
+  bearer-only: true
+
+
 --- 
 spring:
   config:
@@ -58,6 +69,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://richard:richard@${eureka.instance.hostname}:1000/eureka/
+
+keycloak:
+  credentials:
+    secret: BpLzt6cPxyPpHmydwDzQEFwE8q9iWzug
 
 --- 
 spring:
@@ -72,6 +87,10 @@ eureka:
     serviceUrl:
       defaultZone: http://richard:richard@${eureka.instance.hostname}:1000/eureka/
 
+keycloak:
+  credentials:
+    secret: BpLzt6cPxyPpHmydwDzQEFwE8q9iWzug
+
 --- 
 spring:
   config:
@@ -84,3 +103,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://richard:richard@${eureka.instance.hostname}:1000/eureka/
+
+keycloak:
+  credentials:
+    secret: BpLzt6cPxyPpHmydwDzQEFwE8q9iWzug
