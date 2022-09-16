@@ -32,7 +32,7 @@ public class KeycloakAuthController {
   }
 
   @PostMapping("/logout")
-  @Operation(summary = "logout", description = "User login to the ERP System")
+  @Operation(summary = "Logout", description = "User login to the ERP System")
   public ResponseEntity<Notification> logout(WebRequest request, @RequestParam("refresh_token") String refreshToken) {
     Notification tokenResponse = authService.logout(request, refreshToken);
     return new ResponseEntity<>(tokenResponse, HttpStatus.OK);
