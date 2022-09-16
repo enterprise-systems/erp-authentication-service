@@ -8,6 +8,7 @@ class ErpAuthenticationServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		assertTrue(true);
 	}
 
 }
