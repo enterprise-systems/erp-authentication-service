@@ -16,5 +16,4 @@ public class AuthConstant {
 
   public static final String SCOPE = "scope";
 
-
 }

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
@@ -15,7 +16,6 @@ import com.enterprisesystems.erpauthenticationservice.apis.requests.AuthRequest;
 import com.enterprisesystems.erpauthenticationservice.services.KeycloakAuthService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/auth")
@@ -32,11 +32,9 @@ public class KeycloakAuthController {
   }
 
   @PostMapping("/logout")
-  @Operation(summary = "Logout", description = "User logout to the ERP System")
-  @SecurityRequirement(name = "Bearer Authentication")
-  public ResponseEntity<Notification> logout(WebRequest request) {
-    request.getHeaderValues("Authorization");
-    Notification tokenResponse = authService.logout("token");
+  @Operation(summary = "logout", description = "User login to the ERP System")
+  public ResponseEntity<Notification> logout(WebRequest request, @RequestParam("refresh_token") String refreshToken) {
+    Notification tokenResponse = authService.logout(request, refreshToken);
     return new ResponseEntity<>(tokenResponse, HttpStatus.OK);
   }
 
